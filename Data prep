@@ -1,1 +1,9 @@
 #Data clean and prep
+# Things to do:
+# - Convert date format,
+# - Aggregate reviews by day
+# - Aggregate review count by month
+# - Merge data by date, keep individual counts
+# - Add total review counts
+# - Forecast?
+# - RMSE?
