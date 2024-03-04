@@ -1,0 +1,25 @@
+Kevin Farmer
+Natali Magill
+Jacob Bronkala
+Haley Robinson
+Conlin Bowen
+
+# Data clean and prep:
+# - Convert date format,
+# - Aggregate reviews by day
+# - Aggregate review count by month
+# - Merge data by date, keep individual counts
+# - Add total review counts
+# Do Forecast
+# Measure RMSE
+# Presentation
+
+Due dates:
+Make Plan - Mar 8
+12 month forecast in CSV format - Apr 24
+Modeling code - Apr 24
+Presentation - Apr 25/30/May 2
+Presentation slides - May 7
+- Non-technical
+- Technical
+
