@@ -1,25 +1,32 @@
-Kevin Farmer
-Natali Magill
-Jacob Bronkala
-Haley Robinson
-Conlin Bowen
+Kevin Farmer - Make plan, manage repository, forecasting
+Natali Magill - Data clean and prep
+Jacob Bronkala - Presentation - technical
+Haley Robinson - Data clean and prep
+Conlin Bowen - Presentation - non-technical
 
-# Data clean and prep:
-# - Convert date format,
-# - Aggregate reviews by day
-# - Aggregate review count by month
-# - Merge data by date, keep individual counts
-# - Add total review counts
-# Do Forecast
-# Measure RMSE
-# Presentation
+x Make plan - 1 hr (Mar 6)
+x Data clean and prep: - 2 hr (Apr 1)
+    - Convert date format
+    - Aggregate review count by month
+    - Merge data by date, keep individual counts
+    - Add total review counts
+x Forecast predictions - 1 hr (Apr 13)
+    - CSV format
+    - Colummns: month (year month), n_reviews
+    - 12 predctions, monthly for one year (Dec 22 - Nov 23)
+    - Chronologically, old -> new
+x Presentation - 4 hr (Apr 20 for group review)
+x   - Non-technical
+        - Series history, forecast, and accuracy
+        - Generally describe nerd stuff
+x   - Technical
+        - Choices made to find model
+        - How we made the model
 
 Due dates:
-Make Plan - Mar 8
+Plan - Mar 8
 12 month forecast in CSV format - Apr 24
 Modeling code - Apr 24
 Presentation - Apr 25/30/May 2
 Presentation slides - May 7
-- Non-technical
-- Technical
 
