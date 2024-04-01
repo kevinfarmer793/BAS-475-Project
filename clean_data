@@ -40,5 +40,6 @@ hawaii_reviews <- hawaii %>%
 print(hawaii_reviews)
 
 # into one dataset
-total_reviews <- inner_join(ashville_reviews, denver_reviews, by="month") %>% 
-  inner_join(hawaii_reviews, by="month")
+total_reviews <- merge(ashville_reviews, denver_reviews, by = "date", all = TRUE)
+total_reviews <- merge(total_reviews, hawaii_reviews, by = "date", all = TRUE)
+total_reviews[is.na(total_reviews)] <- 0 
