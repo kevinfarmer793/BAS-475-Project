@@ -1,0 +1,49 @@
+#Haley 4/1/2024
+
+denver_reviews <- read.csv("denver_reviews.csv")
+ashville_reviews <- read.csv("ashville_reviews.csv")
+hawaii_reviews <- read.csv("hawaii_reviews.csv")
+
+
+
+# Convert date column from number of days since Jan 1 1970 to actual date
+denver_reviews$date <- as.POSIXct(denver_reviews$date * 86400, origin = "1970-01-01", tz = "UTC")
+ashville_reviews$date <- as.POSIXct(ashville_reviews$date * 86400, origin = "1970-01-01", tz = "UTC")
+hawaii_reviews$date <- as.POSIXct(hawaii_reviews$date * 86400, origin = "1970-01-01", tz = "UTC")
+
+#Make the date column be formated as year month for all 3 data sets
+library(zoo)
+denver_reviews$date <- as.yearmon(denver_reviews$date)
+ashville_reviews$date <- as.yearmon(ashville_reviews$date)
+hawaii_reviews$date <- as.yearmon(hawaii_reviews$date)
+
+#change the review id to be one in order to count reviews per month
+denver_reviews$review_id <- 1
+ashville_reviews$review_id <- 1
+hawaii_reviews$review_id <- 1
+
+#group by month to get total number of reviews
+library(dplyr)
+denver_reviews <- denver_reviews %>%
+  group_by(date) %>%
+  summarise(Total_Denver_Reviews = sum(review_id))
+
+ashville_reviews <- ashville_reviews %>%
+  group_by(date) %>%
+  summarise(Total_Ashville_Reviews = sum(review_id))
+
+hawaii_reviews <- hawaii_reviews %>%
+  group_by(date) %>%
+  summarise(Total_Hawaii_Reviews = sum(review_id))
+
+#Make into one df
+Reviews <- merge(ashville_reviews,
+                 hawaii_reviews, by = "date", all = TRUE)
+Reviews <- merge(Reviews,
+                 denver_reviews, by = "date", all = TRUE)
+
+#Replace NA with zero
+Reviews[is.na(Reviews)] <- 0 
+
+#Find total reviews for all three locations together
+Reviews$Total_Reviews <- Reviews$Total_Ashville_Reviews + Reviews$Total_Denver_Reviews + Reviews$Total_Hawaii_Reviews
