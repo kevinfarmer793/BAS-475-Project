@@ -1,0 +1,42 @@
+# read in csv's
+ashville <- read.csv("ashville_reviews.csv")
+denver <- read.csv("denver_reviews.csv")
+hawaii <- read.csv("hawaii_reviews.csv")
+
+# read in dates as days since 1970. then remove the previous date column.
+ashville <- ashville %>% 
+  mutate(new_date=as_date(date, origin="1970-01-01")) %>% 
+  select(-date)
+denver <- denver %>% 
+  mutate(new_date=as_date(date, origin="1970-01-01")) %>% 
+  select(-date)
+hawaii <- hawaii %>% 
+  mutate(new_date=as_date(date, origin="1970-01-01")) %>% 
+  select(-date)
+
+# Count reviews per data set
+
+ashville <- ashville %>% 
+  mutate(month=format(new_date, "%Y-%m"))
+ashville_reviews <- ashville %>% 
+  group_by(month) %>% 
+  summarize(entries=n())
+print(ashville_reviews)
+
+denver <- denver %>% 
+  mutate(month=format(new_date, "%Y-%m"))
+denver_reviews <- denver %>% 
+  group_by(month) %>% 
+  summarize(entries=n())
+print(denver_reviews)
+
+hawaii <- hawaii %>% 
+  mutate(month=format(new_date, "%Y-%m"))
+hawaii_reviews <- hawaii %>% 
+  group_by(month) %>% 
+  summarize(entries=n())
+print(hawaii_reviews)
+
+# into one dataset
+total_reviews <- inner_join(ashville_reviews, denver_reviews, by="month") %>% 
+  inner_join(hawaii_reviews, by="month")
