@@ -1,3 +1,5 @@
+# Natali 4/1/2024
+
 # read in csv's
 ashville <- read.csv("ashville_reviews.csv")
 denver <- read.csv("denver_reviews.csv")
